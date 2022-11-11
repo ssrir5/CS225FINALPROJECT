@@ -1,0 +1,79 @@
+## CS 225 Final Project Project Proposal
+Jash Rajesh Parekh (jashrp2@illinois.edu)
+Arul Viswanathan (arulv2@illinois.edu)
+Shreyas Sriram (ssrir5@illinois.edu)
+Nimish Mathur (nimishm2@illinois.edu)
+
+## Leading Question 
+
+As students who all have busy schedules but still enjoy traveling from time to time, we have found it to be a common concern that flight traveling is always a nuisance. Between flight cancellations and the endless layovers, we have found there to be key disconnects in flight path algorithms that are currently used. With this, our team is planning to use the OpenFlights Dataset in an attempt to assist its users in several key ways:
+
+First, we will be using the starting and final destination locations to identify distances between two airports. Using these as weights for the edges, we plan to use Dijkstra’s Shortest Path Algorithm to find the shortest path from one location to the final destination through the routes database. This will help users identify the quickest routes available between two locations and the least amount of layovers. The other key way that we plan to work with the graph set is by using Depth First Search traversal to find visited locations using Tarjan’s strongly connected components algorithm. 
+
+## Dataset Acquisition
+
+## Data Format
+
+Our input datasets consist of both the airports.dat and the routes.dat. We need the airports.dat file to build our graph and our weights would be the distance between two different airports found in the airports.dat file. We will also be using the routes.dat file to illustrate the routes between the different airports found in the airports.dat file. We will use the distance between locations and number of stops as discriminating factors, and we will output a result to the user based on both factors. The datasets are both fairly large, airports.dat contains standard information about 10000 airports and the routes.dat contains information about 67663 routes between 3321 airports. We will use a subset of the data, as in whatever information is relevant to us in trying to solve our problem. Metrics like airport codeshare, airline, airport altitude, airport time zones aren’t relevant and so we will remove these data columns from our dataset in the first couple of weeks when we focus on cleaning the data. We will use our newly constructed datasets to build our graph and present an output to the user. 
+
+## Data Correction
+For the airport dataset, we have various data inputs that we may potentially have to correct. Firstly, there will be a formatting check, if there is a certain amount of data or the wrong type of data being inputted, the entire datapoint will be omitted so as to avoid false data or checks. Secondly, with regards to establishing the location data points using latitude and longitude, we will implement checks for latitude - ensure it is within -90 to 90 degrees - and longitude - ensure it is within 180 to 180 degrees. Furthermore, for things such as airport code and different identifiers, there will be several safeties we will implement like checking the number of digits, etc.
+## Data Storage
+
+Both of our functionalities will require us to build a graph. Our nodes will be obtained from the first file, which contains all of the airports, and the edges will be obtained from the second file, which contains all of the routes. 
+
+## Algorithm 
+
+For our final project, we are using BFS for the traversal, Djikstras, and Tarjans. Each one of these algorithms will have a specific purpose in order to allow us to determine the shortest path between two locations for our travelers.
+	To traverse through the database, we are going to use a Depth First Search to traverse through the airports and the flights that connect the two airports. DFS will assist us in determining the smallest distance between two flights. 
+Dijkstra’s algorithm will be used to calculate the shortest distance between two flights using their coordinates. The dataset that we are given provides us with both the latitude and longitude of the location of the airport, and we will use these components as the weightage for the edges for our algorithm. This will be our main component in determining the shortest path. Our input for Dijkstras, would be the longitudes and latitudes and our outputs would be the shortest path.
+	Cycle Detection Algorithm will be used to find any and all cycles between any 2 nodes. This will be implemented using Tarjan’s algorithm and a BFS/DFS. This is done with the goal of finding a round trip wherein you can travel to a variety of places without having to return to a visited place unless necessary.
+Efficiency:
+Our target Big-O efficiency for the implementation of Dijkstra’s algorithm is O(E + Vlog(V)), where E is the number of edges in our graph and V is the number of vertices in our graph. The target Big-O complexity for our implementation of Tarjan’s algorithm, which we are using for cycle detection, is O(E + V), where once again E represents the number of edges in our graph and V represents the number of vertices in our graph.
+
+## Timeline
+
+Week 1: (10/31 - 11/5)
+
+Determine what we are doing for our project
+Complete proposal , team contract, and github
+
+Week 2: (11/6 - 11/12) 
+
+Process the dataset in VS code and set up our data structure
+
+Determine and set up necessary classes and files
+
+Outline necessary major methods
+
+Split up the work and begin the first steps for each algorithm
+
+Set up small dataset for testing
+
+Week 3: (11/13 -11/19)
+
+Finish our dfs traversal
+
+Continue working on Dijkstras
+
+Start Tarjans
+
+Test Implementations of Tarjans and Dijkstras
+
+Week 4: (11/20 - 11/26)
+
+Finish up algorithms
+
+Test Implementations of Tarjans
+
+Week 5: (11/27 - 12/3)
+
+Implement input out system
+
+Create script for final presentation
+
+Week 6: (12/4 - 12/8):
+
+Finalize presentation
+
+Document and clean code
