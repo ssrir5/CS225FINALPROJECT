@@ -3,7 +3,6 @@ using std::string;
 class Airport{
     public:
         //constructor one
-
         Airport(int ID, string name, string city, string country, string IATA, long double latitude, long double longitude /*, long double altitude */){
             airportID_ = ID;
             airportName_ = name;
