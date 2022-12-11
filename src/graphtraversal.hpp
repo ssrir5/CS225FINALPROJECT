@@ -32,6 +32,6 @@ class Graph {
         vector<int> EdgeCollector(int x);
         vector<int> dijkstras(int s, int d);
         int minDist(int dist[], vector<int> q);
-        bool CycleDetectionAlgo(int s, int d) {
+        bool CycleDetectionAlgo(int s, int d);
 
 };
