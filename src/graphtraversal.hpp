@@ -34,6 +34,6 @@ class Graph {
         vector<int> dijkstras(int s, int d);
         int minDist(int dist[], vector<int> q);
         bool CycleDetectionAlgo(int s, int d);
-        vector<int> Graph::DijstraksBFS(int s);
+        vector<int> DijstraksBFS(int s);
 
 };

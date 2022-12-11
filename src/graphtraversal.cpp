@@ -226,15 +226,15 @@ vector<int> Graph::dijkstras(int s, int d) {
     //     distance[i] = 2147483647;
     //     vector;
     // int i = 0;
-    vector<int> reachable = DijstraksBFS(s, d);
-    for(auto V : reachable) {
+    vector<int> reachable = DijstraksBFS(s);
+    // for(auto V : reachable) {
         // cout << "enter forloop: " << endl;
-        distance[V] = 2147483647;
-        prev[V] = -1;
+        // distance[V] = 2147483647;
+        // prev[V] = -1;
         // queue.push_back(V.first);
         // cout << V.first << endl;
         // i++;
-    }
+    // }
 
         // cout << i << endl;
 
@@ -357,18 +357,18 @@ bool Graph::CycleDetectionAlgo(int s, int d) {
     return false;
 }
 
-vector<int> Graph::dijkstras(int s, int d) {
-    vector<long double> distance; //PUSHING BACK THE CURR VALUE OF DISTANCE
-    vector<int> prev;  // PUSHING BACK ID
-    vector<int> reachable = DijstraksBFS(s);
-    for(int i = 0; i < reachable.size(); i++) {
-        IDtoIndex[reachable[i]] = i;
-        distance.push_back(2147483647);
-        prev.push_back(-1);
-    }
+// vector<int> Graph::ijkstras(int s, int d) {
+//     vector<long double> distance; //PUSHING BACK THE CURR VALUE OF DISTANCE
+//     vector<int> prev;  // PUSHING BACK ID
+//     vector<int> reachable = DijstraksBFS(s);
+//     for(int i = 0; i < reachable.size(); i++) {
+//         IDtoIndex[reachable[i]] = i;
+//         distance.push_back(2147483647);
+//         prev.push_back(-1);
+//     }
 
 
 
 
 
-}
+// }
