@@ -18,7 +18,7 @@ class Graph {
         unordered_map<int, Airport> AirportFinder;    //ID TO Airport for CSV
         mutable unordered_map<int, unordered_map<int, Pathway>> adjacency_list;
         // std::vector<Airport> airportVec;   //MAY BE UNNECESSARY
-        vector<int> BFSTraversal(int s);
+        vector<int> BFSTraversal(int s, int d);
         std::vector<std::vector<std::string>> CSVReader;
         std::string file_to_string(const std::string& filename);
         std::string TrimRight(const std::string & str);
@@ -32,4 +32,6 @@ class Graph {
         vector<int> EdgeCollector(int x);
         vector<int> dijkstras(int s, int d);
         int minDist(int dist[], vector<int> q);
+        bool CycleDetectionAlgo(int s, int d) {
+
 };

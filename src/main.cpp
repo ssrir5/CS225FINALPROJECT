@@ -6,9 +6,9 @@ x.CSVReaderVertex("../csv/cleanairplane.csv");
 x.CSVReaderEdge("../csv/cleanroutes.csv");
 // vector<int> deeznuts = x.EdgeCollector(3370);
 // x.BFSTraversal(2430);
-vector<int> deeznuts = x.dijkstras(3370, 3395);
-for(int i = 0; i < deeznuts.size(); i++){
-    cout << "Num: " << deeznuts[i] << endl;
-}
+vector<int> deeznuts = x.BFSTraversal(502, 2773);
+// for(int i = 0; i < deeznuts.size(); i++){
+    // cout << "Num: " << deeznuts[i] << endl;x
+// }
 
 }
