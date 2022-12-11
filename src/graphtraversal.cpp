@@ -159,7 +159,7 @@ int Graph::SplitString(const std::string & str1, char sep, std::vector<std::stri
         return fields.size();
     }
 //WHERE S IS EQUAL TO AIRPORT ID START
-vector<int> Graph::BFSTraversal(int s, int d) {
+bool Graph::BFSTraversal(int s, int d) {
     deque<int> queue;
     vector<bool> visited;
     vector<int> output;
@@ -173,32 +173,47 @@ vector<int> Graph::BFSTraversal(int s, int d) {
         s = queue.front();
         // cout << "This Airport: " << s << "has these edges:  " << endl;
         if(s == d){
-            cout << "SHIT HAS BEEN FOUND" << endl;
-                return output;
-            break;
+            return true;
         }
-        x++;
-        cout << "xth flight: " << x << endl;
+        // x++;
+        // cout << "xth flight: " << x << endl;
         queue.pop_front();
-
         vector<int> edges = EdgeCollector(s);
-        // for(int i = 0; i < edges.size(); i++){ 
-        //     cout << edges[i] <<", ";
-        // }
         cout << endl;
 
         for(int i = 0; i < edges.size(); i++){
             if(visited[edges[i]] != true){
                 visited[edges[i]] = true;
                 queue.push_back(edges[i]);
-                output.push_back(edges[i]);
-                // cout << "Airport: "<< edges[i]  << endl;
             }
         }
 
     }
     
-    return vector<int>();
+    return false;
+}
+vector<int> Graph::DijstraksBFS(int s) {
+    deque<int> queue;
+    vector<bool> visited;
+    vector<int> output;
+    for(int i = 0; i < 15000; i++){
+        visited.push_back(false);
+    }
+    visited[s] = true;
+    queue.push_back(s);
+    while(!queue.empty()){
+        s = queue.front();
+        queue.pop_front();
+        vector<int> edges = EdgeCollector(s);
+        for(int i = 0; i < edges.size(); i++){
+            if(visited[edges[i]] != true){
+                visited[edges[i]] = true;
+                queue.push_back(edges[i]);
+                output.push_back(edges[i]);
+            }
+        }
+    } 
+    return output;
 }
 
 vector<int> Graph::dijkstras(int s, int d) {
@@ -211,7 +226,7 @@ vector<int> Graph::dijkstras(int s, int d) {
     //     distance[i] = 2147483647;
     //     vector;
     // int i = 0;
-    vector<int> reachable = BFSTraversal(s, d);
+    vector<int> reachable = DijstraksBFS(s, d);
     for(auto V : reachable) {
         // cout << "enter forloop: " << endl;
         distance[V] = 2147483647;
@@ -339,6 +354,21 @@ bool Graph::CycleDetectionAlgo(int s, int d) {
         }
 
     }
-    
     return false;
+}
+
+vector<int> Graph::dijkstras(int s, int d) {
+    vector<long double> distance; //PUSHING BACK THE CURR VALUE OF DISTANCE
+    vector<int> prev;  // PUSHING BACK ID
+    vector<int> reachable = DijstraksBFS(s);
+    for(int i = 0; i < reachable.size(); i++) {
+        IDtoIndex[reachable[i]] = i;
+        distance.push_back(2147483647);
+        prev.push_back(-1);
+    }
+
+
+
+
+
 }
