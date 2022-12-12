@@ -23,7 +23,7 @@ class Pathway{
             long double deltaLat = radianConversion(source.latitude_) - radianConversion(destination.latitude_);
             long double deltaLong = radianConversion(source.longitude_) - radianConversion(destination.longitude_);
             //THESE TWO LinES adapted from //HAVERSINE EQUATION
-            long double value = pow(sin(deltaLat / 2), 2) + cos(source.latitude_) * cos(destination.latitude_) * pow(sin(deltaLong / 2), 2);
+            long double value = pow( sin(deltaLat / 2), 2) + cos(source.latitude_) * cos(destination.latitude_) * pow(sin(deltaLong / 2), 2);
             value = 2 * asin(sqrt(value));
             value = value * 6371;
             return value;
