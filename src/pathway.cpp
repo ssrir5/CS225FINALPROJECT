@@ -13,7 +13,7 @@ class Pathway{
     Pathway(){
     }
     // Pathway Assignment
-        int getWeight(){
+        long double getWeight(){
             return this->weight;
         }
         void setWeight(int j){

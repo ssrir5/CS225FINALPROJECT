@@ -4,6 +4,7 @@
 #include <deque>
 #include <climits>
 #include <stack>
+#include <algorithm>
 
 // COMMANDLINE: cd src and then: clang++ main.cpp graphtraversal.cpp airports.cpp pathway.cpp -o main && ./main
 Graph::Graph(){
@@ -353,35 +354,58 @@ bool Graph::CycleDetectionAlgo(int s, int d) {
 }
 
 vector<int> Graph::dijkstras(int s, int d) {
-    vector<int> distance; //PUSHING BACK THE CURR VALUE OF DISTANCE
-    vector<int> prev;  // PUSHING BACK ID
+    unordered_map<int, long double> distance; //PUSHING BACK THE CURR VALUE OF DISTANCE
+    unordered_map<int, int> prev;  // PUSHING BACK ID //key is prev airport ID to next one
     // int n = adjacency_list.size();
+    bool exists;
     vector<int> reachable = DijstraksBFS(s);
-    for(int i = 0; i < reachable.size(); i++) {
+    for(auto i : reachable) {
         // IDtoIndex[reachable[i]] = i;
-        distance.push_back(2147483647);
-        prev.push_back(-1);
+        distance[i] = 2147483647;
+        prev[i] = -1;
+        if(i == d){
+            exists = true;
+        }
     }
+    
     priority_queue<pair<int, int>, vector< pair<int, int> >, greater<pair<int, int> > > pq;
-    pq.push(make_pair(s, 0));
+    pq.push(make_pair(0, s));
     distance[s] = 0;
-
+    
     while(!pq.empty()) {
-        int u = pq.top().first;
+        int u = pq.top().second;
         pq.pop();
-        for (int i =0; i < adjacency_list[u].size(); ++i) {
-            int v = adjacency_list[u][i].first; // idk what the conversion over is
-            int weight = adjacency_list[u][i].second;// same with this one
+        vector<int> edge = EdgeCollector(u);
+        for (int i =0; i < edge.size(); ++i) {
+            int v = edge[i]; // idk what the conversion over is
+            long double weight = adjacency_list[u][edge[i]].getWeight();// same with this one
+            // cout << "weight: " << weight << ", " << u << ", " << v << endl;
             
-            // If the distance to v is shorter by going through u...
             if(distance[v] > distance[u] + weight)
                 {
-                // Update the distance of v.
-                distance[v] = distance[u] + weight;
-                // Insert v into the pq. 
-                pq.push(make_pair(v, distance[v]));
+                    prev[v] = u;.
+                    distance[v] = distance[u] + weight;
+                    pq.push(make_pair(distance[v], v));
                 }
         }
     }
-    return distance;
+    // for (auto i : distance) {
+    //     cout << "Airport is: " << i.first << " , " << i.second << endl;
+    // }
+    int current = d;
+    vector<int> path;
+    
+    if(exists == true){
+        while(current != s){
+            path.push_back(current);
+            current = prev[current];
+        }
+    }
+    path.push_back(s);
+   reverse(path.begin(), path.end());
+        for (auto i : path) {
+        cout << "Airport is: " << AirportFinder[i].airportName_ << endl;
+    }
+ 
+    return path;
 }
