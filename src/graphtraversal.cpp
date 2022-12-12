@@ -404,7 +404,7 @@ vector<int> Graph::dijkstras(int s, int d) {
     path.push_back(s);
    reverse(path.begin(), path.end());
         for (auto i : path) {
-        cout << "Airport is: " << AirportFinder[i].airportName_ << endl;
+        cout << "Path of Flight is: " << AirportFinder[i].airportName_ << endl;
     }
  
     return path;
