@@ -16,11 +16,11 @@ using namespace std;
 class Graph {
     public:
         unordered_map<int, Airport> AirportFinder;    //ID TO Airport for CSV
-        mutable unordered_map<int, unordered_map<int, Pathway>> adjacency_list;
+        mutable unordered_map<int, unordered_map <int, Pathway> > adjacency_list;
         unordered_map<int, int> IDtoIndex;
         // std::vector<Airport> airportVec;   //MAY BE UNNECESSARY
         bool BFSTraversal(int s, int d);
-        std::vector<std::vector<std::string>> CSVReader;
+        std::vector<std::vector<std::string> > CSVReader;
         std::string file_to_string(const std::string& filename);
         std::string TrimRight(const std::string & str);
         std::string TrimLeft(const std::string & str);

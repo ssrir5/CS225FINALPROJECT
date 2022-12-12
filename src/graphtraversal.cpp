@@ -5,21 +5,20 @@
 #include <climits>
 #include <stack>
 
-// COMMANDLINE: clang++ main.cpp graphtraversal.cpp airports.cpp pathway.cpp -o main && ./main
+// COMMANDLINE: cd src and then: clang++ main.cpp graphtraversal.cpp airports.cpp pathway.cpp -o main && ./main
 Graph::Graph(){
     real = 1;
 };
 vector<int> Graph::EdgeCollector(int x){
-    
     vector<int> keys;
     keys.reserve(adjacency_list[x].size());
     // cout << "enter function" << endl;
         //ENTER FUNCTION
-for(auto edge : adjacency_list[x]) {
+    for(auto edge : adjacency_list[x]) {
     // cout << "enter forloop: " << endl;
-    keys.push_back(edge.first);
+        keys.push_back(edge.first);
     // cout << edge.first;
-}
+    }
     return keys;
 }
 // int Graph::EdgeCollector(int x){
@@ -50,12 +49,8 @@ int y = 0;
 
         Airport x;
 
-
         x.airportID_ = std::stoi(comma[1]);
-
         x.airportName_ = comma[2];
-
-
         x.latitude_ = std::stold(comma[3]);
 
 
@@ -155,11 +150,11 @@ int Graph::SplitString(const std::string & str1, char sep, std::vector<std::stri
         str.erase(0,pos+1);  
 
     }
-        fields.push_back(str);
-        return fields.size();
-    }
+    fields.push_back(str);
+    return fields.size();
+}
 //WHERE S IS EQUAL TO AIRPORT ID START
-bool Graph::BFSTraversal(int s, int d) {
+bool Graph::BFSTraversal(int s, int d) { // try to print vector of the path
     deque<int> queue;
     vector<bool> visited;
     vector<int> output;
@@ -216,93 +211,93 @@ vector<int> Graph::DijstraksBFS(int s) {
     return output;
 }
 
-vector<int> Graph::dijkstras(int s, int d) {
-    // vector<int> queue;
-    int distance[300000];
-    int prev[300000];
-    int u = 0;
+// vector<int> Graph::dijkstras(int s, int d) {
+//     // vector<int> queue;
+//     int distance[300000];
+//     int prev[300000];
+//     int u = 0;
 
-    // for(int i = 0; i < 15000; i++){
-    //     distance[i] = 2147483647;
-    //     vector;
-    // int i = 0;
-    vector<int> reachable = DijstraksBFS(s);
-    // for(auto V : reachable) {
-        // cout << "enter forloop: " << endl;
-        // distance[V] = 2147483647;
-        // prev[V] = -1;
-        // queue.push_back(V.first);
-        // cout << V.first << endl;
-        // i++;
-    // }
+//     // for(int i = 0; i < 15000; i++){
+//     //     distance[i] = 2147483647;
+//     //     vector;
+//     // int i = 0;
+//     vector<int> reachable = DijstraksBFS(s);
+//     // for(auto V : reachable) {
+//         // cout << "enter forloop: " << endl;
+//         // distance[V] = 2147483647;
+//         // prev[V] = -1;
+//         // queue.push_back(V.first);
+//         // cout << V.first << endl;
+//         // i++;
+//     // }
 
-        // cout << i << endl;
+//         // cout << i << endl;
 
-        // return vector<int>();
+//         // return vector<int>();
 
-        distance[s] = 0;
-        cout << int(reachable.size()) << endl;
+//         distance[s] = 0;
+//         cout << int(reachable.size()) << endl;
 
 
-    while(!reachable.empty()){
-        u = minDist(distance, reachable);
-        if(u == d){
-            break;
-        }
-        reachable.erase(reachable.begin() + u);
-        // queue.find(u)
-        vector<int> edges = EdgeCollector(u);
-        vector<int> edgesinQ;
+//     while(!reachable.empty()){
+//         u = minDist(distance, reachable);
+//         if(u == d){
+//             break;
+//         }
+//         reachable.erase(reachable.begin() + u);
+//         // queue.find(u)
+//         vector<int> edges = EdgeCollector(u);
+//         vector<int> edgesinQ;
         
-        for(int i = 0; i < edges.size(); i ++){
-            vector<int>::iterator iter = std::find(reachable.begin(), reachable.end(), reachable[i]);
-            if(iter != reachable.end()){
-                edgesinQ.push_back(edges[i]);
-            }
-        }
+//         for(int i = 0; i < edges.size(); i ++){
+//             vector<int>::iterator iter = std::find(reachable.begin(), reachable.end(), reachable[i]);
+//             if(iter != reachable.end()){
+//                 edgesinQ.push_back(edges[i]);
+//             }
+//         }
 
-        for(int j = 0; j < edgesinQ.size(); j++){
-            int alt = distance[u] + adjacency_list[u][edgesinQ[j]].getWeight();
-            if(alt < distance[edges[j]]){
-                distance[edges[j]] = alt;
-                prev[edges[j]] = u;
-            }
-        }  
-    }
+//         for(int j = 0; j < edgesinQ.size(); j++){
+//             int alt = distance[u] + adjacency_list[u][edgesinQ[j]].getWeight();
+//             if(alt < distance[edges[j]]){
+//                 distance[edges[j]] = alt;
+//                 prev[edges[j]] = u;
+//             }
+//         }  
+//     }
 
-// for each vertex v in Graph.Vertices:
-//  4          dist[v] ← INFINITY
-//  5          prev[v] ← UNDEFINED
-//  6          add v to Q
-//  7      dist[source] ← 0
-//  8      
-//  9      while Q is not empty:
-// 10          u ← vertex in Q with min dist[u]
-// 11          remove u from Q
-// 12          
-// 13          for each neighbor v of u still in Q:
-// 14              alt ← dist[u] + Graph.Edges(u, v)
-// 15              if alt < dist[v]:
-// 16                  dist[v] ← alt
-// 17                  prev[v] ← u
-// 18
-// 19      return dist[], prev[]
-    // }
-    // if prev[u] is defined or u = source:          // Do something only if the vertex is reachable
-// 4      while u is defined:                       // Construct the shortest path with a stack S
-// 5          insert u at the beginning of S        // Push the vertex onto the stack
-// 6          u ← prev[u]
-    vector<int> solstack;
+// // for each vertex v in Graph.Vertices:
+// //  4          dist[v] ← INFINITY
+// //  5          prev[v] ← UNDEFINED
+// //  6          add v to Q
+// //  7      dist[source] ← 0
+// //  8      
+// //  9      while Q is not empty:
+// // 10          u ← vertex in Q with min dist[u]
+// // 11          remove u from Q
+// // 12          
+// // 13          for each neighbor v of u still in Q:
+// // 14              alt ← dist[u] + Graph.Edges(u, v)
+// // 15              if alt < dist[v]:
+// // 16                  dist[v] ← alt
+// // 17                  prev[v] ← u
+// // 18
+// // 19      return dist[], prev[]
+//     // }
+//     // if prev[u] is defined or u = source:          // Do something only if the vertex is reachable
+// // 4      while u is defined:                       // Construct the shortest path with a stack S
+// // 5          insert u at the beginning of S        // Push the vertex onto the stack
+// // 6          u ← prev[u]
+//     vector<int> solstack;
 
-    if(prev[u] != -1 || u == s){
-        while(u != -1){
-            solstack.push_back(u);
-            cout<< "U: " << u << endl;
-            u = prev[u];
-        }
-    }
-return solstack;
-}
+//     if(prev[u] != -1 || u == s){
+//         while(u != -1){
+//             solstack.push_back(u);
+//             cout<< "U: " << u << endl;
+//             u = prev[u];
+//         }
+//     }
+// return solstack;
+// }
 
 int Graph::minDist(int dist[], vector<int> q) 
 // int Graph::minDist(vector<int>& distvect, vector<bool>& boolvec) 
@@ -357,18 +352,36 @@ bool Graph::CycleDetectionAlgo(int s, int d) {
     return false;
 }
 
-// vector<int> Graph::ijkstras(int s, int d) {
-//     vector<long double> distance; //PUSHING BACK THE CURR VALUE OF DISTANCE
-//     vector<int> prev;  // PUSHING BACK ID
-//     vector<int> reachable = DijstraksBFS(s);
-//     for(int i = 0; i < reachable.size(); i++) {
-//         IDtoIndex[reachable[i]] = i;
-//         distance.push_back(2147483647);
-//         prev.push_back(-1);
-//     }
+vector<int> Graph::dijkstras(int s, int d) {
+    vector<int> distance; //PUSHING BACK THE CURR VALUE OF DISTANCE
+    vector<int> prev;  // PUSHING BACK ID
+    // int n = adjacency_list.size();
+    vector<int> reachable = DijstraksBFS(s);
+    for(int i = 0; i < reachable.size(); i++) {
+        // IDtoIndex[reachable[i]] = i;
+        distance.push_back(2147483647);
+        prev.push_back(-1);
+    }
+    priority_queue<pair<int, int>, vector< pair<int, int> >, greater<pair<int, int> > > pq;
+    pq.push(make_pair(s, 0));
+    distance[s] = 0;
 
-
-
-
-
-// }
+    while(!pq.empty()) {
+        int u = pq.top().first;
+        pq.pop();
+        for (int i =0; i < adjacency_list[u].size(); ++i) {
+            int v = adjacency_list[u][i].first; // idk what the conversion over is
+            int weight = adjacency_list[u][i].second;// same with this one
+            
+            // If the distance to v is shorter by going through u...
+            if(distance[v] > distance[u] + weight)
+                {
+                // Update the distance of v.
+                distance[v] = distance[u] + weight;
+                // Insert v into the pq. 
+                pq.push(make_pair(v, distance[v]));
+                }
+        }
+    }
+    return distance;
+}
