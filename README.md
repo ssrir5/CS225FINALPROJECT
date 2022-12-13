@@ -5,6 +5,10 @@
 Motivation: 
 * This project highlights a few key functionalities related to the Open Flights routes and airports data set. As students who all have busy schedules but still enjoy traveling from time to time, we have found it to be a common concern that flight traveling is always a nuisance. Between flight cancellations and the endless layovers, we have found there to be key disconnects in flight path algorithms that are currently used.
 
+Supporting Resourcs:
+* YouTube Video Presentation: https://youtu.be/IkH00z3BrPY
+* Written Report: https://docs.google.com/document/d/1lRxzKw7C0545ZOcbIQCMNlh4fplvTNrAX-kGIrlrGQU/edit?usp=sharing 
+
 Functionality:
 * Data Parsing Pipeline: Reads through airports and routes csv files. Creates an adjacency list with weights connected to the nodes.
 * Breadth-First Search: Traversal through graph algorithm.
