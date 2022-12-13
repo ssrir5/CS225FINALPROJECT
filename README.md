@@ -25,7 +25,7 @@ Code Structure:
     * airport.cpp: edge class set up
   * **csv**:   
     * cleanairplane.csv: comma seperated file storing index, Airport ID, Name, Latitude, Longitude in that order
-    * cleanroutes.csv: comma seperated file storing: index, Source Airport IDs, Destination Airport ID
+    * cleanroutes.csv: comma seperated file storing: index, Source Airport IDs, Destination Airport ID respectively
 
   * **tests**: 
     * tests.cpp: Contains test cases to check the validity of BFS, Dijkstra's Algo, and Tarjan's Algo.
