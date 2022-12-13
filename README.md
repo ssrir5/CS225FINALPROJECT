@@ -36,7 +36,7 @@ Code Structure:
 ```clang++ ../tests/tests.cpp graphtraversal.cpp airports.cpp pathway.cpp -o test && ./test```
 4. Run the following line in the terminal to run the project (make sure it is run in the src folder): 
 ```clang++ main.cpp graphtraversal.cpp airports.cpp pathway.cpp -o main && ./main```
-
+5. Within the main file, you can change a start and stop destination to see the Dijkstra's implementation work for different start airports and their destinations.
 ## Roles
 #### Shreyas: 
 * BFS Algorithm
