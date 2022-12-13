@@ -6,8 +6,7 @@
 #include <stack>
 #include <algorithm>
 
-// COMMANDLINE: src directory and then: clang++ main.cpp graphtraversal.cpp airports.cpp pathway.cpp -o main && ./main
-
+// COMMANDLINE: src directory and then: clang++ ../tests/tests.cpp graphtraversal.cpp airports.cpp pathway.cpp -o test && ./test
 // Graph constructor: Accepts the airports csv as the first parameter. Accepts the pathway csv as the second parameter.
 Graph::Graph(const std::string & filename, const std::string & filename2){
 this->CSVReaderVertex(filename);
@@ -39,7 +38,6 @@ void Graph::CSVReaderVertex(const std::string & filename) {
         // cout<< "Latitude : " << AirportFinder[x.airportID_].latitude_ << endl;
         // cout<< "Longitude: " << AirportFinder[x.airportID_].longitude_ << endl;
     }
-    // return table;
 }
 void Graph::CSVReaderEdge(const std::string & filename) {
     string fd = file_to_string(filename);
@@ -120,7 +118,6 @@ bool Graph::BFSTraversal(int s, int d) {
     // cout << "No path exists between these two locations." << endl;
     return false;
 }
-vector<int> Graph::DijstraksBFS(int s) {
 
 // Detects whether there exists a cycle starting from the source 
 bool Graph::CycleDetectionAlgo(int s) {
