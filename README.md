@@ -1,65 +1,59 @@
-//READ ME
-From within directory "src":
-clang++ main.cpp graphtraversal.cpp airports.cpp pathway.cpp -o main && ./main
-clang++ ../tests/tests.cpp graphtraversal.cpp airports.cpp pathway.cpp -o test && ./test
-
-
-
 # CS 225: Open Flights Final Project
 > *By Arul, Jash, Nimish, and Shreyas*
 
 ## Introduction 
 Motivation: 
-* As students who all have busy schedules but still enjoy traveling from time to time, we have found it to be a common concern that flight traveling is always a nuisance. Between flight cancellations and the endless layovers, we have found there to be key disconnects in flight path algorithms that are currently used. 
-
-This project highlights
+* This project highlights a few key functionalities related to the Open Flights routes and airports data set. As students who all have busy schedules but still enjoy traveling from time to time, we have found it to be a common concern that flight traveling is always a nuisance. Between flight cancellations and the endless layovers, we have found there to be key disconnects in flight path algorithms that are currently used.
 
 Functionality:
-* Visualization: choropleth maps at the county and state levels for the USA, and country level for the rest of the world
-* Slider Feature: changes data across different years
-* Hover Feature: shows the county/state/country name and the number of students from that area
-* Data Analysis: graphs and analysis components that further break down the data
+* Data Parsing Pipeline: Reads through airports and routes csv files. Creates an adjacency list with weights connected to the nodes.
+* Breadth-First Search: Traversal through graph algorithm.
+* Dijkstra's Algorithm: Finds the shortest path between two airports. 
+* Tarjan's Cycle Detection Algorithm: Finds cycles within the airport routes.
 
 ## Architecture
 Front End App: 
-* **client**: contains the React App files
-  * **src**: this folder houses most of the JavaScript files that are compiled by webpack
-    * **components**: 
-      * **App**: the parent component that renders the dropdown menu when the app is first started
-      * **dropdown**: a menu that opens and closes onclick as well as renders a different map component depending on the type selected
-      * **slider**: injects new data into the map component when changed by the user by prompting a new action to update the map states
-      * **maps**: reads the csv data and maps it to the data state in the component. A composable map is rendered with geographies that match the data ids to the topojson ids from the geoUrl
-  * **public**: 
-    * index.hmtl: where the HTML code of the React Components are injected into
-    * data.html: highlights a sample data set with zip code data pertinent to students at UIUC
-    * stats.html: displays differences in the students at UIUC, split by zip code and charted. The difference highlights a 10 year change from 2009 to 2019.
-    * about.html: includes the ReadMe file with instructions of the React App and Data parsing pipeline.
+  * **src**:
+    * graphtraversal.cpp: Contains the csv data parsing pipeline. This file also includes the BFS, Dijkstra's Algorithm, and Tarjan's Algorithm implementation.
+    * graphtraversal.hpp: Header file for graphtraversal.cpp
+    * main.cpp: Example Dijktra's Output
+    * pathway.cpp: edge class weight set up
+    * airport.cpp: edge class set up
+  * **csv**:   
+    * cleanairplane.csv: comma seperated file storing index, Airport ID, Name, Latitude, Longitude in that order
+    * cleanroutes.csv: comma seperated file storing: index, Source Airport IDs, Destination Airport ID
 
-Back end: 
-* **data**: 
-  * **client**: contains all relevant data files
-  * **public**: this folder contains our data parsing and analyzation files in folders *clean-data* and *data-analysis*
-    * **components**: 
-      * **Data Parsing Pipeline**: script reads in datasets and performs whatever cleaning was necessary (rids file of outliers, etc.)
-      * **Visualizations**: files containing data visualizations for all the years; visualizations include pie charts and scatter plots for the year by year data
-
+  * **tests**: 
+    * tests.cpp: Contains test cases to check the validity of BFS, Dijkstra's Algo, and Tarjan's Algo.
 ## Project Setup
 1. Clone this GitHub repository
-2. Open project and navigate to *client* folder via terminal
-3. Run the following line in the terminal to install all necessary dependencies: 
-```npm install```
-4. Run the following line in the terminal to run the project (make sure it is run in the client folder): 
-```npm start```
+2. Open project and navigate to *src* folder via terminal (this can be done doing ```cd src```)
+3. Run the following line in the terminal to run the test cases: 
+```clang++ ../tests/tests.cpp graphtraversal.cpp airports.cpp pathway.cpp -o test && ./test```
+4. Run the following line in the terminal to run the project (make sure it is run in the src folder): 
+```clang++ main.cpp graphtraversal.cpp airports.cpp pathway.cpp -o main && ./main```
 
 ## Roles
-#### Arul: 
-Found relevant datasets: Wrote code to clean, and reformat datasets: Performed Data Analysis and created Visualizations
+#### Shreyas: 
+* BFS Algorithm
+* Dijkstra’s Algorithm
+* Adjacency List + Graph Class
+
 #### Jash: 
-Built data parsing pipeline: found relevant datasets, wrote scripts to parse through, clean, and reformat datasets, worked w/ Arul to analyze data
+* Data Parsing Pipeline
+* Cycle Detection Algorithm
+* Debugging
+
 #### Nimish: 
-Navigation and Data Visualization: Developed navigation bar, embedded raw datasets and visualizations, and worked w/ Kaitlyn on front-end React App
-#### Kaitlyn: 
-React App and Components: App, County/State/World Maps, Slider (updating data onChange), Dropdown Menu
+* Data Parsing Pipeline
+* BFS Algorithm
+* Dijkstra’s Algorithm
+
+#### Arul: 
+* Data Cleaning
+* Cycle Detection Algorithm
+* Debugging
+
 
 
 

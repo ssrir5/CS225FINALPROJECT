@@ -23,7 +23,6 @@ int main() {
     TESTCASE3.push_back(350);
     TESTCASE3.push_back(507);
 
-
     Graph x = Graph("../csv/cleanairplane.csv", "../csv/cleanroutes.csv");
 
     // BFS TEST CASES
@@ -36,6 +35,7 @@ int main() {
     if(x.BFSTraversal(351, 7690) == false){
         cout << "passes impossible traversal BFS checker" << endl;
     }
+
     // DIJKSTRA'S ALGORITHM TEST CASES
     vector<int> path1 = x.dijkstras(1926,1953);
     vector<int> path2 = x.dijkstras(502, 2773);
@@ -49,7 +49,8 @@ int main() {
     if(path3 == TESTCASE3){
         cout << "Passes hard test case 3!" << endl;
     }
-    // CYCLIC DETECTION TEST CASES
+
+        // CYCLIC DETECTION TEST CASES
     if(x.CycleDetectionAlgo(502)){
         cout << "Found cycle, detection test 1 passed!" << endl;
     }

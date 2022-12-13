@@ -193,10 +193,11 @@ vector<int> Graph::dijkstras(int s, int d) {
     path.push_back(s);
    reverse(path.begin(), path.end());
     // cout << "The shortest path goes from: ";
-        for (auto i : path) {
-        // cout << AirportFinder[i].airportName_ << endl; 
-        // cout << i << endl;
-    }
+    //     for (auto i : path) {
+    //     cout << AirportFinder[i].airportName_ << endl; 
+    //     cout << "Airport ID: " << i << endl;
+    // }
+    // cout << "Found" << endl;
     return path;
 }
 
