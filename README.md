@@ -12,7 +12,7 @@ Functionality:
 * Tarjan's Cycle Detection Algorithm: Finds cycles within the airport routes.
 
 ## Architecture
-Front End App: 
+Code Structure:
   * **src**:
     * graphtraversal.cpp: Contains the csv data parsing pipeline. This file also includes the BFS, Dijkstra's Algorithm, and Tarjan's Algorithm implementation.
     * graphtraversal.hpp: Header file for graphtraversal.cpp
