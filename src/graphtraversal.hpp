@@ -34,5 +34,4 @@ class Graph {
         int minDist(int dist[], vector<int> q);
         bool CycleDetectionAlgo(int s);
         vector<int> DijstraksBFS(int s);
-
 };

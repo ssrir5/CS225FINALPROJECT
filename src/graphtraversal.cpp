@@ -6,7 +6,6 @@
 #include <stack>
 #include <algorithm>
 
-// COMMANDLINE: src directory and then: clang++ ../tests/tests.cpp graphtraversal.cpp airports.cpp pathway.cpp -o test && ./test
 // Graph constructor: Accepts the airports csv as the first parameter. Accepts the pathway csv as the second parameter.
 Graph::Graph(const std::string & filename, const std::string & filename2){
 this->CSVReaderVertex(filename);
@@ -97,7 +96,7 @@ bool Graph::BFSTraversal(int s, int d) {
     queue.push_back(s); 
 
     while(!queue.empty()){
-        s = queue.front();                          //S is equal to front of the queue
+        s = queue.front();                          //S is equal to front (or the start) of the queue
 
         if(s == d){
             // cout << "A path exists between these two locations!" << endl;
@@ -193,12 +192,11 @@ vector<int> Graph::dijkstras(int s, int d) {
     }
     path.push_back(s);
    reverse(path.begin(), path.end());
-//    cout << "The shortest path goes from: ";
+    // cout << "The shortest path goes from: ";
         for (auto i : path) {
         // cout << AirportFinder[i].airportName_ << endl; 
         // cout << i << endl;
     }
- 
     return path;
 }
 

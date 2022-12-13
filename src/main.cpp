@@ -1,8 +1,6 @@
 #include "graphtraversal.hpp"
 int main() {
-    //DIJKSTRAS TEST CASES
-
-// DIJKSTRA'S ALGORITHM TEST CASES
+// DIJKSTRA'S FLIGHT PATH OUTPUT
 Graph x = Graph("../csv/cleanairplane.csv", "../csv/cleanroutes.csv");
 vector<int> path = x.dijkstras(2937, 507);
 cout << "From" << endl;
